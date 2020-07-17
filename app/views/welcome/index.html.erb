@@ -1,10 +1,7 @@
 <center>
 <h2> Welcome to Daily Hunt</h2>
 <div class="container" style="border-radius:50px;border-color:none;background-color:rgb(242, 238, 237);height:500px;">
-  <% @articles.each do |article| %>
-<% article.title %>
-<% article.description %>
-  <% end %>
+
 <% @newspaper.each do |newspaper| %>
 <div class="col-lg-3 col-md-offset-2" id="newsindex">
   <%= image_tag("icons8-strategy-news-48.png", style: "margin-top:40px;") %>
@@ -13,6 +10,5 @@
 </center>
 </div>
 <% end %>
-
 </div>
 </center>
