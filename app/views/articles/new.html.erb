@@ -6,16 +6,13 @@
 </div>
 <div class="col-lg-6">
 
-  <%= form_with model: @article, scope: :article, url: articles_path, id: "add_comment" do |form| %>
+  <%= form_with model: @article, scope: :article, url: articles_path, id: "add_comment",local: true do |form| %>
   <% if @article.errors.any? %>
-    <div id="errorExplanation">
-        <h2><%= pluralize(@article.errors.count, "error") %> prohibited this post from being saved:</h2>
         <ul>
             <% @article.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
+            <li style="color:red;"><%= msg %></li>
             <% end %>
           </ul>
-    </div>
 <% end %>
   <p id='hiddenValue'>
     <%= form.hidden_field :newsid, :value => @getnewsid %>
@@ -31,8 +28,8 @@
   </p>
   <p id="error_field" style="color:red;"></p>
     <p style="margin-left:100px;">
-      <button class='btn btn-primary' id='submitForm'>Save Article</button>
-      <%= link_to "<button style='background-color:#337ab7;border:none;'>Back</button>".html_safe , article_path(@getnewsid), class: 'btn btn-primary' %>
+      <button style="color: #fff;background-color: #5cb85c;border: none;" class="btn btn-success" id="submitForm">Save Article</button>
+      <%= link_to "<button style='color: #fff;background-color: #5cb85c;border: none;'>Back</button>".html_safe , articles_path(:id => @getnewsid), class:'btn btn-success'%>
     </p>
   <% end %>
 

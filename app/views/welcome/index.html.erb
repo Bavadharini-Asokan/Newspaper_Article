@@ -1,16 +1,22 @@
-<center><h2> Welcome to Daily Hunt</h2></center>
-<div class="container" style="border-radius:50px;border-color:none;background-color:rgb(242, 238, 237);height:230px;">
-<% @newspaper.each do |newspaper| %>
-<div class="col-lg-3 col-md-offset-2" id="newsindex">
-  <%= image_tag("icons8-strategy-news-48.png", style: "margin-top:5px;") %>
-<%= link_to newspaper.title, article_path(newspaper), id:'welcome_page' %>
-</div>
-<% end %>
-</div></br></br>
+
 <div class="container">
+<nav class="navbar navbar-dark bg-success">
+<% @newspaper.each do |newspaper| %>
+<%= link_to newspaper.title, articles_path(id:newspaper.id), style:'padding-left:100px;', class:'navbar-brand', id:'welcome_page' %>
+<% end %>
+</nav>
+</div>
+<div class="container">
+<% @images = Dir.glob("app/assets/images/newImages/*.jpeg") %>
 <% @article.each do |article| %>
-  <%= image_tag("news.jpeg", alt: "Edit Entry") %>
+<div class="col-lg-5">
+
+    <%= image_tag("news.jpeg", alt: "Edit Entry") %>
+
+</div>
+<div class="col-lg-7" style="height:300px;">
 <h3><%= article.title %></h3></br>
 <%= article.description %></br></br>
+</div>
 <% end %>
 </div>

@@ -1,0 +1,9 @@
+class CommentsController < ApplicationController
+  def create
+    @article = Article.find(params[:id])
+    @comment = @article.comments.build(params.require(:comment).permit(:comment_text,:article_id))
+    if @comment.save
+      redirect_to article_path(:id => @article.id)
+    end
+  end
+end
