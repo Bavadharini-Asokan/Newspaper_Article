@@ -1,33 +1,74 @@
+
 <div class="container" style="margin-top:50px;">
 
 <div class="col-lg-6">
     <h2 style="margin-top:100px;">CREATE A NEW ARTICLE HERE!</h2>
-  </div>
-
+</div>
 <div class="col-lg-6">
-  <%= form_with scope: :article, url: articles_path, local: true do |form| %>
+
+  <%= form_with model: @article, scope: :article, url: articles_path, id: "add_comment" do |form| %>
+  <% if @article.errors.any? %>
+    <div id="errorExplanation">
+        <h2><%= pluralize(@article.errors.count, "error") %> prohibited this post from being saved:</h2>
+        <ul>
+            <% @article.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+            <% end %>
+          </ul>
+    </div>
+<% end %>
   <p id='hiddenValue'>
     <%= form.hidden_field :newsid, :value => @getnewsid %>
   </p>
-    <p>
+  <p>
       <%= form.label :title %><br>
-      <%= form.text_field :title, style:'width:400px;height:50px;'%>
-    </p>
-    <p>
-      <%= form.label :text %></br>
-      <%= form.text_area :description, style:'width:400px;height:150px;' %>
-    </p>
-
+      <%= form.text_field :title, id:'title', style:'width:400px;height:50px;'%>
+  </p>
+  <p id="error_title" style="color:red;"></p>
+  <p>
+    <%= form.label :text %></br>
+    <%= form.text_area :description, id:'description', style:'width:400px;height:150px;'%>
+  </p>
+  <p id="error_field" style="color:red;"></p>
     <p style="margin-left:100px;">
-      <%= form.submit 'Save Article', class:'btn btn-primary' %>
+      <button class='btn btn-primary' id='submitForm'>Save Article</button>
       <%= link_to "<button style='background-color:#337ab7;border:none;'>Back</button>".html_safe , article_path(@getnewsid), class: 'btn btn-primary' %>
     </p>
-
   <% end %>
+
 </div>
 </div>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
 <script>
   $(document).ready(function() {
     $("hiddenValue").hide();
+
   });
-  </script>
+$('#submitForm').click(function(){
+  var title = $("#title").val();
+  var description = $("#description").val();
+  if(title != "" && description != "")
+  {
+    document.getElementById('error_field').innerHTML  = ""
+    document.getElementById('error_title').innerHTML  = ""
+    $('#add_comment').on('ajax:success', function(event, data) {
+      console.log('GET RESPONSE!');
+    });
+  }
+  else if(title == "" && description == ""){
+    document.getElementById('error_field').innerHTML  = "Please fill all the fields"
+    return false;
+  }
+  else if(description == ""){
+      document.getElementById('error_title').innerHTML  = ""
+    document.getElementById('error_field').innerHTML  = "Description is required"
+    return false;
+  }
+  else{
+    document.getElementById('error_field').innerHTML  = ""
+document.getElementById('error_title').innerHTML  = "Title is required"
+return false;
+}
+});
+</script>

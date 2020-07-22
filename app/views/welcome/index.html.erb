@@ -1,14 +1,16 @@
-<center>
-<h2> Welcome to Daily Hunt</h2>
-<div class="container" style="border-radius:50px;border-color:none;background-color:rgb(242, 238, 237);height:500px;">
-
+<center><h2> Welcome to Daily Hunt</h2></center>
+<div class="container" style="border-radius:50px;border-color:none;background-color:rgb(242, 238, 237);height:230px;">
 <% @newspaper.each do |newspaper| %>
 <div class="col-lg-3 col-md-offset-2" id="newsindex">
-  <%= image_tag("icons8-strategy-news-48.png", style: "margin-top:40px;") %>
-  <center>
+  <%= image_tag("icons8-strategy-news-48.png", style: "margin-top:5px;") %>
 <%= link_to newspaper.title, article_path(newspaper), id:'welcome_page' %>
-</center>
 </div>
 <% end %>
+</div></br></br>
+<div class="container">
+<% @article.each do |article| %>
+  <%= image_tag("news.jpeg", alt: "Edit Entry") %>
+<h3><%= article.title %></h3></br>
+<%= article.description %></br></br>
+<% end %>
 </div>
-</center>

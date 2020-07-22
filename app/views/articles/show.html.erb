@@ -1,4 +1,4 @@
-
+<p id="notice" style ="margin-top:50px;color:green;font-sixe:20px;margin-left:1000px;"><%= notice %></p>
 <div class="container" style="margin-top:40px">
 <p id='hidden'>
 <%= i = 1 %>
@@ -11,8 +11,6 @@
 <% end %>
 
 <% @article.each do |article| %>
-
-
 <div class="col-lg-5" style="height:400px;">
   <%= image_tag("news.jpeg", width: '400px', alt: "Edit Entry") %>
 </div>
@@ -29,7 +27,7 @@
 <center>
   <%= link_to "<button id='button_id'>Create Article</button>".html_safe , new_article_path(:news_id => article.newsid), style:"margin-bottom:20px;", class: 'btn btn-primary' %>
   <%= link_to "<button id='button_id1'>Back</button>".html_safe , welcome_index_path, style:"margin-bottom:20px;", class: 'btn btn-primary' %>
-    
+
   </center>
 <% end %>
 <%= hidden_field :givenvalue, i += 1 %>
@@ -38,6 +36,7 @@
 <script>
   $(document).ready(function() {
   $( "#hidden" ).hide();
+   $("#notice" ).fadeOut(3000);
 });
 </script>
 <style>
