@@ -1,13 +1,12 @@
 
 <center>
-
-        <%= form_with scope: :newspaper, controller: 'newspaper',action: 'create',method: :post do |form| %>
-          <p>
-            <%= form.label :title %><br>
-            <%= form.text_field :title, placeholder: 'Your title here', required: true  %>
-          </p>
-          <p>
-            <%= form.submit %>
-          </p>
-        <% end %>
+  <%= form_with scope: :newspaper, controller: 'newspaper',action: 'create',method: :post do |form| %>
+    <p>
+      <%= form.label :title %><br>
+      <%= form.text_field :title, placeholder: 'Your title here', required: true  %>
+    </p>
+    <p>
+      <%= form.submit %>
+    </p>
+  <% end %>
 </center>

@@ -1,22 +1,18 @@
-
 <div class="container">
-<nav class="navbar navbar-dark bg-success">
-<% @newspaper.each do |newspaper| %>
-<%= link_to newspaper.title, articles_path(id:newspaper.id), style:'padding-left:100px;', class:'navbar-brand', id:'welcome_page' %>
-<% end %>
-</nav>
+  <nav class="navbar navbar-dark bg-success">
+    <% @newspaper.each do |newspaper| %>
+      <%= link_to newspaper.title, articles_path(id:newspaper.id), style:'padding-left:100px;', class:'navbar-brand', id:'welcome_page' %>
+    <% end %>
+  </nav>
 </div>
 <div class="container">
-<% @images = Dir.glob("app/assets/images/newImages/*.jpeg") %>
-<% @article.each do |article| %>
-<div class="col-lg-5">
-
-    <%= image_tag("news.jpeg", alt: "Edit Entry") %>
-
-</div>
-<div class="col-lg-7" style="height:300px;">
-<h3><%= article.title %></h3></br>
-<%= article.description %></br></br>
-</div>
-<% end %>
+  <% @article.each do |article| %>
+    <div class="col-lg-5">
+      <%= image_tag("news.jpeg", alt: "Edit Entry") %>
+    </div>
+    <div class="col-lg-7" style="height:300px;">
+      <h3><%= article.title %></h3></br>
+      <%= article.description %></br></br>
+    </div>
+  <% end %>
 </div>

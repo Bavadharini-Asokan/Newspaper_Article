@@ -1,17 +1,17 @@
 </center>
-<div class="container" style="width:1000px;">
-<h3><%= @article.title %></h3></br>
-<%= @article.description %></br></br></br>
-<% if !@article.comments.blank? %>
-<h4 style="color:green">Reviews</h4>
-  <% @article.comments.each do |comment| %>
-    <h5><%= comment.comment_text %></h5></br>
-  <% end %>
-<% end %>
-<%= form_with model: @comment, scope: :comment, url: comments_path(:id => @article.id), id: "add_comment",local: true do |form| %>
-    <%= form.text_field :comment_text, placeholder:"Add Your Comment Here", style:'margin-top:50px;width:500px;height:100px;' %></br></br>
-    <%= form.submit 'Send', class:"btn btn-success" %>
-    <%= link_to "<button class='btn btn-success'>Back</button>".html_safe, articles_path(:id => @article.newsid) %>
-<% end %>
-</div>
+  <div class="container" style="width:1000px;">
+    <h3><%= @article.title %></h3></br>
+    <%= @article.description %></br></br></br>
+    <% if !@article.comments.blank? %>
+      <h4 style="color:green">Reviews</h4>
+        <% @article.comments.each do |comment| %>
+          <h5><%= comment.comment_text %></h5></br>
+        <% end %>
+    <% end %>
+    <%= form_with model: @comment, scope: :comment, url: comments_path(:id => @article.id), id: "add_comment",local: true do |form| %>
+        <%= form.text_field :comment_text, placeholder:"Add Your Comment Here", style:'margin-top:50px;width:500px;height:100px;' %></br></br>
+        <%= form.submit 'Send', class:"btn btn-success" %>
+        <%= link_to "<button class='btn btn-success'>Back</button>".html_safe, articles_path(:id => @article.newsid) %>
+    <% end %>
+  </div>
 </center>

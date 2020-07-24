@@ -1,6 +1,7 @@
 class WelcomeController < ApplicationController
-    def index
-        @newspaper = Newspaper.all
-        @article = Article.all
-    end
+# Get the list of newspapers and articles
+  def index
+      @newspaper = Newspaper.all
+      @article = Article.all
+  end
 end
